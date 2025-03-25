@@ -1,0 +1,73 @@
+[
+    {
+        "id": 1,
+        "title": "Mastering Next.js: A Beginner's Guide",
+        "image": "https://source.unsplash.com/600x400/?nextjs,code",
+        "meta_description": "Learn how to build scalable web applications using Next.js in this beginner-friendly guide.",
+        "description": "Next.js is a powerful React framework for building server-side rendered and static websites. In this guide, we will explore its key features, setup process, and how to create your first Next.js app.",
+        "author": "John Doe",
+        "date": "2024-03-21T14:30:00Z",
+        "category": "Web Development"
+    },
+    {
+        "id": 2,
+        "title": "Understanding React Server Components",
+        "image": "https://source.unsplash.com/600x400/?reactjs,server",
+        "meta_description": "Explore the power of React Server Components and how they improve performance and SEO.",
+        "description": "React Server Components (RSC) allow developers to create highly performant applications by rendering components on the server. This article dives into how RSC works and its impact on modern web development.",
+        "author": "Jane Smith",
+        "date": "2024-03-18T09:15:00Z",
+        "category": "Web Development"
+    },
+    {
+        "id": 3,
+        "title": "AI in 2024: The Future of Machine Learning",
+        "image": "https://source.unsplash.com/600x400/?ai,machinelearning",
+        "meta_description": "Discover the latest trends in artificial intelligence and machine learning in 2024.",
+        "description": "AI continues to evolve rapidly. From GPT models to AI-powered automation, this article explores the advancements in AI and how businesses are leveraging these technologies.",
+        "author": "Alice Johnson",
+        "date": "2024-03-15T12:45:00Z",
+        "category": "AI & Machine Learning"
+    },
+    {
+        "id": 4,
+        "title": "Top 10 Programming Languages to Learn in 2024",
+        "image": "https://source.unsplash.com/600x400/?coding,programming",
+        "meta_description": "A detailed analysis of the best programming languages to learn in 2024.",
+        "description": "Want to stay ahead in the tech industry? We have ranked the top 10 programming languages for 2024, including Python, JavaScript, Go, and Rust, based on job demand and industry growth.",
+        "author": "Bob Williams",
+        "date": "2024-03-10T16:20:00Z",
+        "category": "Programming Languages"
+    },
+    {
+        "id": 5,
+        "title": "Cybersecurity Best Practices for Developers",
+        "image": "https://source.unsplash.com/600x400/?cybersecurity,hacking",
+        "meta_description": "Protect your applications with these essential cybersecurity practices every developer should know.",
+        "description": "Security threats are on the rise. This article covers essential cybersecurity practices, including secure coding, authentication strategies, and encryption techniques for developers.",
+        "author": "Emma Brown",
+        "date": "2024-03-05T11:00:00Z",
+        "category": "Cybersecurity"
+    },
+    {
+        "id": 6,
+        "title": "Building Mobile Apps with React Native",
+        "image": "https://source.unsplash.com/600x400/?reactnative,mobile",
+        "meta_description": "Learn how to create cross-platform mobile apps using React Native.",
+        "description": "React Native is the go-to framework for cross-platform mobile app development. This article walks through setting up a React Native project and building a simple mobile app.",
+        "author": "David Miller",
+        "date": "2024-02-28T13:10:00Z",
+        "category": "Mobile Development"
+    },
+    {
+        "id": 7,
+        "title": "Blockchain Explained: A Beginner's Guide",
+        "image": "https://source.unsplash.com/600x400/?blockchain,bitcoin",
+        "meta_description": "Understand how blockchain technology works and its impact on various industries.",
+        "description": "Blockchain is revolutionizing industries from finance to healthcare. This guide explains the basics of blockchain, smart contracts, and their real-world applications.",
+        "author": "Sophia Wilson",
+        "date": "2024-02-22T08:50:00Z",
+        "category": "Blockchain"
+    }
+
+]
