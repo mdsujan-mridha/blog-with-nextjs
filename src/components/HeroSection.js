@@ -7,17 +7,14 @@ import React from 'react';
 
 
 const cinzelFont = Cinzel({
-
     subsets: ['latin'],
     weight: "500",
 
 })
-
 const robotoFont = Roboto({
     subsets: ['latin'],
     weight: "500",
 })
-
 const PopinsFont = Poppins({
     subsets: ['latin'],
     weight: "400",

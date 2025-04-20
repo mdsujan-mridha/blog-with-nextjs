@@ -5,10 +5,11 @@ import Link from 'next/link';
 import homeBannerImage from "@/app/assets/Image -1.png";
 import Image from 'next/image';
 import fakeData from '@/lib/fakeBlogData';
+import { useBlogContext } from '@/app/context/BlogContext';
 
 const HomeBlog = () => {
 
-    const fakeBlogData = fakeData.fakeBlogData;
+    const { blogs, loading, error } = useBlogContext();
     const fakeSubBlogData = fakeData.fakeBlogDataSub;
     //    console.log(fakeBlogData);
     const categories = [
@@ -62,7 +63,7 @@ const HomeBlog = () => {
                         </div>
                         <div className='flex flex-col gap-5 mt-5'>
                             {
-                                fakeBlogData.map((blog, index) => (
+                                blogs.map((blog, index) => (
                                     <BlogCard key={index} blog={blog} />
                                 ))
                             }

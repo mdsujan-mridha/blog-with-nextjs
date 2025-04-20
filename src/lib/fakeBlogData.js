@@ -210,7 +210,7 @@ const featureBlogData = [
       "title": "Mastering React in 30 Minutes",
       "description": "Learn the basics of React, including components, state, and props, in just 30 minutes!",
       "video_url": "https://www.example.com/videos/react-basics.mp4",
-      "thumbnail": "https://www.example.com/thumbnails/react-thumbnail.jpg",
+      "thumbnail": "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcozazlc6z72e3jnvabke.png",
       "category": "Web Development",
       "published_at": "2025-02-22T10:00:00Z",
       "author": {
@@ -223,7 +223,7 @@ const featureBlogData = [
       "title": "The Future of AI: What's Next?",
       "description": "Explore the latest advancements in artificial intelligence and what the future holds for AI technology.",
       "video_url": "https://www.example.com/videos/ai-future.mp4",
-      "thumbnail": "https://www.example.com/thumbnails/ai-thumbnail.jpg",
+      "thumbnail": "https://www.simplilearn.com/ice9/free_resources_article_thumb/Future_Of_Artificial_Intelligence.jpg",
       "category": "AI & Machine Learning",
       "published_at": "2025-02-21T15:30:00Z",
       "author": {
@@ -236,7 +236,7 @@ const featureBlogData = [
       "title": "How to Secure Your Website from Hackers",
       "description": "Discover essential cybersecurity practices to protect your website from attacks and data breaches.",
       "video_url": "https://www.example.com/videos/cybersecurity.mp4",
-      "thumbnail": "https://www.example.com/thumbnails/security-thumbnail.jpg",
+      "thumbnail": "https://www.hostitsmart.com/blog/wp-content/uploads/2021/12/best-practices-to-secure-your-website.jpg",
       "category": "Cybersecurity",
       "published_at": "2025-02-20T12:45:00Z",
       "author": {
@@ -249,7 +249,7 @@ const featureBlogData = [
       "title": "Building a Mobile App with React Native",
       "description": "A step-by-step guide to building a fully functional mobile app using React Native.",
       "video_url": "https://www.example.com/videos/react-native-app.mp4",
-      "thumbnail": "https://www.example.com/thumbnails/react-native-thumbnail.jpg",
+      "thumbnail": "https://www.aceinfoway.com/blog/wp-content/uploads/2020/04/Why-should-you-choose-React-Native-for-your-next-Mobile-Development-Project.jpg",
       "category": "Mobile Development",
       "published_at": "2025-02-19T09:15:00Z",
       "author": {
@@ -261,8 +261,8 @@ const featureBlogData = [
       "id": 5,
       "title": "Getting Started with Blockchain Development",
       "description": "An introduction to blockchain development, including smart contracts and decentralized applications.",
-      "video_url": "https://www.example.com/videos/blockchain.mp4",
-      "thumbnail": "https://www.example.com/thumbnails/blockchain-thumbnail.jpg",
+      "video_url": "https://youtu.be/gdiao7L9GjE?si=OjUTn3VNOtXmsS2G&t=11",
+      "thumbnail": "https://www.xceltec.com/wp-content/uploads/2019/11/why-choose-block-chain.jpg",
       "category": "Blockchain",
       "published_at": "2025-02-18T17:20:00Z",
       "author": {

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const cinzelFont = Cinzel({
-    
+
     subsets: ['latin'],
     weight: "500",
 
@@ -71,7 +71,15 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <Link href="#" className="btn btn-ghost text-4xl"
+                    style={{
+                        background: '#2D3BFF',
+                        backgroundImage: 'linear-gradient(to right, #2D3BFF 21%, #1CFFCA 71%)',
+                        backgroundClip: 'text',
+                        color: 'transparent',
+                    }}
+
+                >Logic Programming </Link>
             </div>
             <div className="navbar-center hidden lg:flex text-2xl">
                 <ul className="menu menu-horizontal px-1 text-2xl">
@@ -85,7 +93,13 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <Link href="#" className="btn btn-ghost text-4xl">
+                    <button className="relative bg-gradient-to-r from-blue-400 to-purple-500 p-[2px] rounded-md">
+                        <div className="flex items-center justify-center bg-black px-6 py-2  text-white text-2xl">
+                            Login
+                        </div>
+                    </button>
+                </Link>
             </div>
         </div>
     );
