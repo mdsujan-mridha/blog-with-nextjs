@@ -10,6 +10,7 @@ const cinzelFont = Cinzel({
 
 })
 import { FaRegFaceSadTear } from "react-icons/fa6";
+import BlogCardSkeleton from "@/components/BlogCardSkeleton";
 
 const categories = [
     {
@@ -29,15 +30,15 @@ const categories = [
         subcategories: ["Machine Learning", "Deep Learning", "Data Visualization"],
     },
     {
-        name:"Programming Languages",
+        name: "Programming Languages",
         subcategories: ["Python", "JavaScript", "Java", "C++", "Ruby"],
     },
     {
-        name:"DevOps & Cloud",
+        name: "DevOps & Cloud",
         subcategories: ["AWS", "Docker", "Kubernetes"],
     },
     {
-        name:"Open Source & Community",
+        name: "Open Source & Community",
         subcategories: ["Contributing to Open Source", "Community Building", "Open Source Leadership"],
     }
 ]
@@ -67,24 +68,40 @@ const page = () => {
                 </div>
             </div>
             <div className="w-full px-12 flex gap-2 justify-between min-h-screen">
-                <div className=" w-2/3">
-
+                <>
                     {
-                        filteredBlogs && filteredBlogs.length > 0 ? (
+                        loading ? (<>
 
-                            filteredBlogs &&
-                            filteredBlogs.map((blog) => (
-                                <BlogCard blog={blog} key={blog._id} />
-                            ))
+                            <div className="flex flex-col gap-5 w-2/3">
+                                {
+                                    Array.from({ length: 4 }).map((_, i) => <BlogCardSkeleton key={i} />)
+                                }
 
-                        ) : (<div className="flex items-center justify-center flex-col gap-5 min-h-96">
-                            <h1 className="text-center text-6xl text-red-600">No blogs found for this category.</h1>
-                            <FaRegFaceSadTear className="text-8xl text-red-600" />
-                            
-                        </div>)
+                            </div>
+
+                        </>) : (
+                            <div className=" w-2/3">
+
+                                {
+                                    filteredBlogs && filteredBlogs.length > 0 ? (
+
+                                        filteredBlogs &&
+                                        filteredBlogs.map((blog) => (
+                                            <BlogCard blog={blog} key={blog._id} />
+                                        ))
+
+                                    ) : (<div className="flex items-center justify-center flex-col gap-5 min-h-96">
+                                        <h1 className="text-center text-6xl text-red-600">No blogs found for this category.</h1>
+                                        <FaRegFaceSadTear className="text-8xl text-red-600" />
+
+                                    </div>)
+                                }
+
+                            </div>
+                        )
                     }
 
-                </div>
+                </>
                 <div className="w-1/4 flex flex-col mx-auto border-l-2 border-slate-800 pl-10">
                     {/* search  */}
                     <div className="w-full py-10">
