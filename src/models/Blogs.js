@@ -9,7 +9,7 @@ const blogSchema = new Schema({
         required: true,
     },
     image: {
-        type: String,
+        type: [String],
         required: true,
     },
     meta_description: {
@@ -20,6 +20,11 @@ const blogSchema = new Schema({
         type: String,
         required: true,
     },
+    content: {
+        type: Object, // Tiptap JSON content goes here
+        required: true,
+    },
+  
     category: {
         type: String,
         required: true,

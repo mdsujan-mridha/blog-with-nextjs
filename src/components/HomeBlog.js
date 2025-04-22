@@ -1,11 +1,12 @@
 "use client"
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import BlogCard from './BlogCard';
 import Link from 'next/link';
 import homeBannerImage from "@/app/assets/Image -1.png";
 import Image from 'next/image';
 import fakeData from '@/lib/fakeBlogData';
 import { useBlogContext } from '@/app/context/BlogContext';
+import BlogCardSkeleton from './BlogCardSkeleton';
 
 const HomeBlog = () => {
 
@@ -61,13 +62,27 @@ const HomeBlog = () => {
                             <h1 className='text-white text-xl font-bold'>Top Blogs </h1>
                             <Link href="/" className='text-white'> View more-- </Link>
                         </div>
-                        <div className='flex flex-col gap-5 mt-5'>
+                        <Fragment>
                             {
-                                blogs.map((blog, index) => (
-                                    <BlogCard key={index} blog={blog} />
-                                ))
+                                loading ? (<>
+
+                                    {
+                                        Array.from({ length: 4 }).map((_, i) => <BlogCardSkeleton key={i} />)
+                                    }
+
+                                </>) : (
+
+                                    <div className='flex flex-col gap-5 mt-5'>
+                                        {
+                                            blogs.map((blog, index) => (
+                                                <BlogCard key={index} blog={blog} />
+                                            ))
+                                        }
+                                    </div>
+                                )
                             }
-                        </div>
+
+                        </Fragment>
                     </div>
                     {/* side bar================================================================================== */}
                     <div className='w-2/6 shadow-lg p-2'>
@@ -91,8 +106,8 @@ const HomeBlog = () => {
                     </div>
 
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 
