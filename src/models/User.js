@@ -20,8 +20,8 @@ const useSchema = new Schema({
         default: Date.now,
     },
 
-}
-{
+},
+    {
         timestamps: true,
     }
 )

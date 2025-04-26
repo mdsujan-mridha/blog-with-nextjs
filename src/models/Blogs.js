@@ -9,7 +9,7 @@ const blogSchema = new Schema({
         required: true,
     },
     image: {
-        type: [String],
+        type: String,
         required: true,
     },
     meta_description: {
@@ -31,7 +31,7 @@ const blogSchema = new Schema({
     },
     author: {
         type: String,
-        required: true,
+        default: "Admin",
     },
     createdAt: {
         type: Date,

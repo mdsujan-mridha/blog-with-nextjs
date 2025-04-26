@@ -13,20 +13,39 @@ const page = () => {
     const [category, setCategory] = useState('');
     const [content, setContent] = useState('');
     const [image, setImage] = useState(null);
-
-
+    const [description, setDescription] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+    
+        if (!title || !metaDescription || !category || !content || !description) {
+            alert('Please fill in all required fields');
+            return;
+        }
+    
         const formData = new FormData();
         formData.append('title', title);
-        formData.append('metaDescription', metaDescription);
+        formData.append('meta_description', metaDescription);
         formData.append('category', category);
-        formData.append('content', content);
-        formData.append('image', image);
-
-        console.log(formData)
-
+        formData.append('content', JSON.stringify(content));
+        if (image) {
+            formData.append('image', image);
+        }
+        formData.append('description', description);
+    
+        try {
+            const res = await fetch('/api/admin/blog', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await res.json();
+            console.log(data);
+    
+      
+        } catch (error) {
+            console.error('Error creating blog:', error);
+            
+        }
     }
 
 
@@ -65,6 +84,14 @@ const page = () => {
 
                     {/* rich text */}
                     <TiptapEditor content={content} onChange={setContent} />
+                    <input
+                        type="text"
+                        placeholder='Short description'
+                        className='w-full p-3  bg-slate-800 text-white rounded-md h-24'
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        required
+                    />
 
                     <input
 

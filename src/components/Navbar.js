@@ -1,8 +1,12 @@
 
+'use client'
 
 import { Cinzel } from 'next/font/google';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
 
 const cinzelFont = Cinzel({
 
@@ -12,6 +16,11 @@ const cinzelFont = Cinzel({
 })
 
 const Navbar = () => {
+
+    const { data: session } = useSession();
+    const [providers, setProviders] = useState(null);
+
+    const pathName = usePathname();
 
     const menuItem = [
         {
@@ -40,6 +49,20 @@ const Navbar = () => {
         },
 
     ]
+
+    useEffect(() => {
+
+        const setAuthProviders = async () => {
+            const response = await getProviders();
+            setProviders(response);
+        }
+        setAuthProviders();
+
+    }, [])
+
+    // console.log(providers)
+  
+    // console.log(session)
 
     return (
         <div className="navbar bg-slate-950 px-12 text-primary text-2xl">
@@ -93,13 +116,29 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link href="#" className="btn btn-ghost text-4xl">
-                    <button className="relative bg-gradient-to-r from-blue-400 to-purple-500 p-[2px] rounded-md">
-                        <div className="flex items-center justify-center bg-black px-6 py-2  text-white text-2xl">
-                            Login
+                {
+                    session?.user ? (
+                        <div className="flex items-center gap-4">
+                            <img src={session.user.image} alt="" className="w-10 h-10 rounded-full" />
+                            <button onClick={() => signOut()} className="btn btn-primary">Sign Out</button>
                         </div>
-                    </button>
-                </Link>
+                    ) : (
+                        <>
+                            {
+                                providers &&
+                                Object.values(providers).map((provider, index) => (
+                                    <Link onClick={() => signIn(provider.id)} href="#" className="btn btn-ghost text-4xl" key={index}>
+                                        <button className="relative bg-gradient-to-r from-blue-400 to-purple-500 p-[2px] rounded-md">
+                                            <div className="flex items-center justify-center bg-black px-6 py-2  text-white text-2xl">
+                                                Login
+                                            </div>
+                                        </button>
+                                    </Link>
+                                ))
+                            }
+                        </>
+                    )
+                }
             </div>
         </div>
     );

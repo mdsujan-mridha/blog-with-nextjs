@@ -7,6 +7,7 @@ import React from 'react';
 import Underline from '@tiptap/extension-underline';
 import Image from '@tiptap/extension-image';
 import Placeholder from "@tiptap/extension-placeholder";
+import MenuBar from "./MenuBar";
 
 
 
@@ -29,9 +30,15 @@ const TiptapEditor = ({ content, onChange }) => {
                 },
             })
         ],
+        type: 'doc',
         content,
         onUpdate: ({ editor }) => {
-            onChange(editor.getHTML())
+            onChange(editor.getJSON())
+        },
+        editorProps: {
+            attributes: {
+                class: 'prose prose-lg sm:prose lg:prose-lg xl:prose-xl  max-w-full focus:outline-none h-96 overflow-y-auto',
+            },
         },
      
 
@@ -39,6 +46,7 @@ const TiptapEditor = ({ content, onChange }) => {
 
     return (
         <div className='border rounded bg-white text-black p-2  overflow-y-auto '>
+            <MenuBar editor={editor}/>
             <EditorContent editor={editor} />
         </div>
     );

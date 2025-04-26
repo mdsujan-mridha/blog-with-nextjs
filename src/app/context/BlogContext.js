@@ -18,7 +18,7 @@ export const BlogProvider = ({ children }) => {
 
         const fetchBlogs = async () => {
             try {
-                const res = await fetch(`${apiDomain}/blogs`, { cache: "force-cache" });
+                const res = await fetch(`${apiDomain}/blogs`);
                 const data = await res.json();
                 setBlogs(data);
                 setFilteredBlogs(data);

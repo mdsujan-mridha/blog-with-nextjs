@@ -8,7 +8,7 @@ async function fetchBlogs() {
         if (!apiDomain) {
             return [];
         }
-        const res = await fetch(`${apiDomain}/blogs`, { cache: "force-cache" });
+        const res = await fetch(`${apiDomain}/blogs`);
         if (!res.ok) {
             throw new Error(`Failed to fetch data,${res.statusText}`);
         }
