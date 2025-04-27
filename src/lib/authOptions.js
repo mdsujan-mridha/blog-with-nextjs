@@ -47,6 +47,8 @@ export const authOptions = {
             const user = await User.findOne({ email: session.user.email })
             // 2. Add the user to the session object
             session.user.id = user._id.toString()
+            // add user role to session object
+            session.user.role = user.role; // ✅ added
             // 3. Return the modified session object
             return session
 

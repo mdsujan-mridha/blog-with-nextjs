@@ -15,11 +15,14 @@ const useSchema = new Schema({
         type: String,
 
     },
+    role: {
+        type: String,
+        default: "user"
+    },
     createdAt: {
         type: Date,
         default: Date.now,
     },
-
 },
     {
         timestamps: true,
