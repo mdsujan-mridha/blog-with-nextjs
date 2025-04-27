@@ -24,7 +24,7 @@ const Navbar = () => {
     const [providers, setProviders] = useState(null);
 
     const pathName = usePathname();
-    console.log(useSession())
+    // console.log(useSession())
 
     const menuItem = [
         {
@@ -123,7 +123,7 @@ const Navbar = () => {
                 {
                     session?.user ? (
                         <div className="flex items-center gap-4">
-                            <img src={session.user.image} alt="" className="w-10 h-10 rounded-full" />
+                          <img src={session.user.image} alt={session.user.name || "User Profile"} className="w-10 h-10 rounded-full" />
                             <div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn m-1">{session.user?.name}</div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-primary text-white">
@@ -135,8 +135,7 @@ const Navbar = () => {
                                             </li>
                                         ): null
                                     }
-
-                                    <li className='text-black text-xl font-bold'> <button onClick={() => signOut()} className='text-lg font-bold '> <GoSignOut />  Logout </button> </li>
+                                    <li className='text-black text-xl font-bold'> <button onClick={() => signOut(providers.id)} className='text-lg font-bold '> <GoSignOut />  Logout </button> </li>
                                 </ul>
                             </div>
                         </div>
