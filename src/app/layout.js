@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { BlogProvider } from "./context/BlogContext";
 import AuthProvider from "@/components/AuthProvider";
+import { AdminBlogProvider } from "./context/admin/AdminBlogContext";
 
 
 
@@ -28,13 +29,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>
-          <Navbar />
-          <BlogProvider>
-            {children}
-          </BlogProvider>
-          <Footer />
-        </AuthProvider>
+        <AdminBlogProvider>
+          <AuthProvider>
+            <Navbar />
+            <BlogProvider>
+              {children}
+            </BlogProvider>
+            <Footer />
+          </AuthProvider>
+        </AdminBlogProvider>
       </body>
     </html>
   );

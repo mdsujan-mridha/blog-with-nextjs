@@ -1,9 +1,11 @@
 import connectDB from "@/config/dbConnection";
 import cloudinary from "@/lib/Cloudinary";
 import Blogs from "@/models/Blogs";
+import { verifyAdmin, withAuth } from "@/utils/VerifyAdmin";
+import { exportTraceState } from "next/dist/trace";
 import { NextResponse } from "next/server"
 
-export async function POST(request) {
+async function createBlog(request) {
 
     try {
         await connectDB();
@@ -39,7 +41,7 @@ export async function POST(request) {
         }
 
         await Blogs.create(newBlog);
-     
+
         return NextResponse.json({ message: "Blog created successfully" }, { status: 201 });
 
     } catch (error) {
@@ -47,3 +49,23 @@ export async function POST(request) {
         return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
     }
 }
+
+
+// get admin blogs
+
+async function getBlogs(request) {
+
+    try {
+        await connectDB();
+        const blogs = await Blogs.find({}).sort({ createdAt: -1 });
+        return NextResponse.json(blogs, { status: 200 });
+    } catch (error) {
+        console.log(error)
+        return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
+    }
+}
+
+
+
+export const POST = withAuth(createBlog, "admin")
+export const GET = withAuth(getBlogs, "admin")

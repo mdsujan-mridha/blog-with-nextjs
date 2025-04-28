@@ -2,13 +2,13 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import {  useLayoutEffect } from "react";
 
 export default function AdminPage() {
     const { data: session, status } = useSession();
     const router = useRouter();
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (status === "unauthenticated") {
             router.push("/");
         }

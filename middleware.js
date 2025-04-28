@@ -19,6 +19,10 @@ export async function middleware(req) {
     if (pathname.startsWith("/admin") && token?.user?.role !== "admin") {
         return NextResponse.redirect(new URL("/", req.url));
     }
+    // For Admin APIs
+    if (pathname.startsWith("/api/admin") && token?.user?.role !== "admin") {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
     // 4. Otherwise, continue to the requested page
     return NextResponse.next();
