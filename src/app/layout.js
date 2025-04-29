@@ -29,15 +29,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AdminBlogProvider>
-          <AuthProvider>
+        <AuthProvider>
+          <AdminBlogProvider>
             <Navbar />
             <BlogProvider>
               {children}
             </BlogProvider>
             <Footer />
-          </AuthProvider>
-        </AdminBlogProvider>
+          </AdminBlogProvider>
+        </AuthProvider>
       </body>
     </html>
   );

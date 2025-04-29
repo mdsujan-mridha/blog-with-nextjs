@@ -6,13 +6,13 @@ export function withAuth(handler, requiredRole = "admin") {
   
   return async (req, ...args) => {
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-    console.log(token, "token from withAuth");
+    // console.log(token, "token from withAuth");
 
     if (!token) {
       return NextResponse.json({ message: "Unauthorized: No token" }, { status: 401 });
     }
 
-    if (requiredRole && token?.user?.role !== requiredRole) {
+    if (token?.role!==requiredRole) {
       return NextResponse.json({ message: "Forbidden: Insufficient permissions" }, { status: 403 });
     }
 

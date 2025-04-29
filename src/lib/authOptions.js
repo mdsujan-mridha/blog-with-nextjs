@@ -41,14 +41,35 @@ export const authOptions = {
             return true
 
         },
+        // add role into JWT token
+        async jwt({ token, account }) {
+
+            // connect with database 
+            await connectDB();
+            // 1.find user in database by user email
+            const dbUser = await User.findOne({ email: token.email });
+            // 2.if find user then inject role into token
+            if (dbUser) {
+                token.role = dbUser.role; // ✅ added
+                token._id = dbUser._id.toString(); // ✅ added
+            }
+            // store access token from Google or any provider 
+            if (account) {
+                token.accessToken = account.access_token; // ✅ added
+            }
+            // 3.return token 
+            return token
+        },
         // modifies the session object after sign in
-        async session({ session }) {
+        async session({ session,token }) {
             // 1. Get the user from the database using the session object
             const user = await User.findOne({ email: session.user.email })
             // 2. Add the user to the session object
             session.user.id = user._id.toString()
             // add user role to session object
             session.user.role = user.role; // ✅ added
+            // inject access token into session object
+            session.user.accessToken = token.accessToken;
             // 3. Return the modified session object
             return session
 
