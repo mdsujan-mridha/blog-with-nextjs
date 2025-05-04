@@ -2,7 +2,7 @@ import connectDB from "@/config/dbConnection";
 import cloudinary from "@/lib/Cloudinary";
 import Blogs from "@/models/Blogs";
 import { verifyAdmin, withAuth } from "@/utils/VerifyAdmin";
-import { exportTraceState } from "next/dist/trace";
+
 import { NextResponse } from "next/server"
 
 async function createBlog(request) {

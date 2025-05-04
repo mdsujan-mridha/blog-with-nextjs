@@ -2,12 +2,13 @@
 
 import BlogDataTable from '@/adminComponents/BlogDataTable';
 import { useAdminBlogContext } from '@/app/context/admin/AdminBlogContext';
+import LoadingSpiner from '@/utils/LoadingSpiner';
 import React from 'react';
 
 const page = () => {
 
     const { adminBlogs, loading, error } = useAdminBlogContext();
-    if (loading) return <p className="text-center text-gray-300">Loading...</p>;
+    if (loading) return <LoadingSpiner />;
     if (error) return <p className="text-center text-red-400">Error: {error.message}</p>;
     // console.log(adminBlogs, 'admin blogs')
     const handleDelete = (id) => {
