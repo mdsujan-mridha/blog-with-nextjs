@@ -1,9 +1,8 @@
 
-
-import { X } from 'lucide-react';
+'use client'
 import React from 'react';
 
-const UserModal = ({ handleEditClick, setIsModalOpen, selectedUser }) => {
+const UserModal = ({ handleEditClick, setIsModalOpen, selectedUser, handleModalUpdate }) => {
 
     // console.log(selectedUser, 'selected user in modal')
 
@@ -43,19 +42,22 @@ const UserModal = ({ handleEditClick, setIsModalOpen, selectedUser }) => {
                             />
                         </div>
                         <div>
-                            <input
-                                type="text"
+                            <select
                                 className="w-full border p-2 rounded mt-1 mb-4"
                                 value={selectedUser?.role || ''}
                                 onChange={(e) =>
                                     handleEditClick({ ...selectedUser, role: e.target.value })
                                 }
-                                placeholder="Role"
+                            >
+                                <option value="">Choose Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
 
-                            />
+                            </select>
                         </div>
                         <div className="flex justify-center items-center space-x-4 mb-4">
                             <button
+                                onClick={handleModalUpdate}
                                 className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                             >
                                 Save Changes

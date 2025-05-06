@@ -1,21 +1,56 @@
+'user client';
 import React, { useState } from 'react';
 import UserModal from './UserModal';
 
-const UserListTable = ({ users }) => {
+import { useSession } from 'next-auth/react';
+const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
+
+const UserListTable = ({ users, onUpdate }) => {
 
     const [selectedUser, setSelectedUser] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { data: session, status } = useSession();
 
     const handleEditClick = (user) => {
         setSelectedUser(user);
         setIsModalOpen(true);
     }
 
-    const handleDelete = (userId) => {
-        // Handle delete action here
-        console.log('Delete user with ID:', userId);
-    }
+    const handleDelete = async (userId) => {
+        if (!session?.user?.accessToken) {
+            console.error('No access token found.');
+            return;
+        }
 
+        try {
+            const response = await fetch(`${apiDomain}/admin/user/${userId}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${session.user.accessToken}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('User deleted successfully:', data);
+                // Optionally update state
+                // setUsers((prev) => prev.filter((user) => user._id !== userId));
+            } else {
+                const errorData = await response.json();
+                console.error('Error deleting user:', errorData);
+            }
+
+        } catch (error) {
+            console.log('Network or server error:', error);
+        }
+    };
+
+
+    const handleModalUpdate = () => {
+        onUpdate?.(selectedItem);
+        setIsModalOpen(false);
+    };
 
     return (
         <div className="overflow-x-auto bg-gray-900 rounded-xl p-4 shadow-md">
@@ -46,13 +81,17 @@ const UserListTable = ({ users }) => {
                                 <td className="py-3 px-6 border">{user?.name || 'N/A'}</td>
                                 <td className="py-3 px-6 border capitalize">{user?.role || 'User'}</td>
                                 <td className="py-3 px-6 border">{user?.email || 'N/A'}</td>
-                                <td className="py-3 px-6 border text-center space-x-2">
-                                    <button className="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded"
+                                <td className="py-3 px-6 border text-center ">
+                                    <button className="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded "
+                                        // onClick={() => handleEditClick(user?._id)}
                                         onClick={() => handleEditClick(user)}
                                     >
+
                                         Edit
                                     </button>
-                                    <button className="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded">
+                                    <button
+                                        onClick={() => handleDelete(user?._id)}
+                                        className="bg-orange-700 hover:bg-red-700 text-white py-1 px-3 rounded">
                                         Delete
                                     </button>
                                 </td>
@@ -74,7 +113,8 @@ const UserListTable = ({ users }) => {
                         setIsModalOpen={setIsModalOpen}
                         selectedUser={selectedUser}
                         setSelectedUser={setSelectedUser}
-                        
+                        handleModalUpdate={handleModalUpdate}
+
                     />
                 )
             }
