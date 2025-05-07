@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { BlogProvider } from "./context/BlogContext";
 import AuthProvider from "@/components/AuthProvider";
 import { AdminBlogProvider } from "./context/admin/AdminBlogContext";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <AdminBlogProvider>
             <Navbar />
+            <Toaster  position="top-center"/>
             <BlogProvider>
               {children}
             </BlogProvider>

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import UserModal from './UserModal';
 
 import { useSession } from 'next-auth/react';
+import toast from 'react-hot-toast';
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 
 const UserListTable = ({ users, onUpdate }) => {
@@ -33,16 +34,19 @@ const UserListTable = ({ users, onUpdate }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log('User deleted successfully:', data);
+                
+                toast.success('User deleted successfully!');
                 // Optionally update state
                 // setUsers((prev) => prev.filter((user) => user._id !== userId));
             } else {
                 const errorData = await response.json();
-                console.error('Error deleting user:', errorData);
+        
+                toast.error('Error deleting user. Please try again.', errorData);
             }
 
         } catch (error) {
-            console.log('Network or server error:', error);
+            
+            toast.error('Network or server error. Please try again later.', error);
         }
     };
 
